@@ -23,42 +23,86 @@ const plexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://itsyahya.com"),
+
   title: {
-    default: "Yahya | Civil Engineering × Intelligent Systems",
-    template: "%s | Yahya",
+    default:
+      "Muhammad Yahya | Civil Engineering × Intelligent Systems Portfolio",
+    template: "%s | Muhammad Yahya",
   },
+
   description:
-    "Portfolio of Muhammad Yahya, a Civil Engineering student at GIKI exploring intelligent systems, embedded computing, robotics, sensing, data and machine learning.",
+    "Portfolio of Muhammad Yahya, a Civil Engineering student at GIKI exploring intelligent systems, embedded computing, robotics, sensing, data, machine learning, and technology-driven engineering solutions.",
+
   keywords: [
     "Muhammad Yahya",
     "Civil Engineering",
+    "Intelligent Systems",
     "GIKI",
+    "Engineering Portfolio",
     "Embedded Systems",
     "Robotics",
     "Machine Learning",
     "ESP32",
-    "Engineering Portfolio",
-    "AEVNS",
+    "Sensing Systems",
+    "Engineering Design",
+    "Data",
+    "Automation",
   ],
-  authors: [{ name: "Muhammad Yahya" }],
+
+  authors: [
+    {
+      name: "Muhammad Yahya",
+      url: "https://itsyahya.com",
+    },
+  ],
+
   creator: "Muhammad Yahya",
+  publisher: "Muhammad Yahya",
+
   openGraph: {
-    title: "Yahya | Civil Engineering × Intelligent Systems",
+    title: "Muhammad Yahya | Civil Engineering × Intelligent Systems",
     description:
-      "Exploring the intersection of physical engineering, sensing, embedded systems, robotics and machine intelligence.",
+      "Exploring the intersection of civil engineering, intelligent systems, embedded computing, robotics, sensing, data, and machine intelligence.",
     url: "https://itsyahya.com",
-    siteName: "Yahya",
+    siteName: "Muhammad Yahya Portfolio",
     type: "website",
+    locale: "en_US",
   },
-  robots: { index: true, follow: true },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Muhammad Yahya | Civil Engineering × Intelligent Systems",
+    description:
+      "Civil Engineering × Intelligent Systems — engineering design, robotics, sensing, data, embedded systems, and machine intelligence.",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+
+  alternates: {
+    canonical: "https://itsyahya.com",
+  },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${manrope.variable} ${plexMono.variable}`}>
+      <body
+        className={`${inter.variable} ${manrope.variable} ${plexMono.variable}`}
+      >
         {children}
       </body>
     </html>
