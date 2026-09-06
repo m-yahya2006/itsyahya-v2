@@ -245,7 +245,9 @@ export default function Home() {
             </Link>
           </Reveal>
 
-          <Reveal delay={100} className="architecture-image" />
+          <Reveal delay={100}>
+          <div className="architecture-image" />
+          </Reveal>
 
           <Reveal delay={180}>
             <blockquote className="editorial-quote">
