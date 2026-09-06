@@ -22,7 +22,7 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://itsyahya.com"),
+  metadataBase: new URL("https://www.itsyahya.com"),
 
   title: {
     default:
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   authors: [
     {
       name: "Muhammad Yahya",
-      url: "https://itsyahya.com",
+      url: "https://www.itsyahya.com",
     },
   ],
 
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     title: "Muhammad Yahya | Civil Engineering × Intelligent Systems",
     description:
       "Exploring the intersection of civil engineering, intelligent systems, embedded computing, robotics, sensing, data, and machine intelligence.",
-    url: "https://itsyahya.com",
+    url: "https://www.itsyahya.com",
     siteName: "Muhammad Yahya Portfolio",
     type: "website",
     locale: "en_US",
@@ -89,7 +89,7 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "https://itsyahya.com",
+    canonical: "https://www.itsyahya.com",
   },
 };
 
