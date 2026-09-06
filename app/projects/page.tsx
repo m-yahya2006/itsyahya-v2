@@ -1,77 +1,112 @@
+import Link from "next/link";
+import Navbar from "@/components/Navbar";
+import Reveal from "@/components/Reveal";
+
 const projects = [
   {
+    index: "01",
     title: "AEVNS",
     subtitle: "Autonomous Electric Vehicle Navigation System",
     description:
-      "An autonomous ground robot combining embedded systems, navigation, hybrid solar-battery monitoring, telemetry, and machine learning.",
+      "A mobile robotics platform combining embedded sensing, autonomous navigation, energy monitoring, wireless telemetry and machine-learning experiments.",
     technologies: ["ESP32", "C++", "Python", "ML", "UDP"],
     status: "In Progress",
     href: "/projects/aevns",
+    visual: "project-featured-visual",
+  },
+  {
+    index: "02",
+    title: "Structural Analysis Study",
+    subtitle: "Civil engineering / structural systems",
+    description:
+      "Reserved for a selected structural or infrastructure project. Replace this copy and image with your strongest civil-engineering case study.",
+    technologies: ["Structures", "Analysis", "Civil"],
+    status: "Add Project",
+    href: "#",
+    visual: "project-structural-visual",
+  },
+  {
+    index: "03",
+    title: "Computer Vision for Inspection",
+    subtitle: "AI for physical-system inspection",
+    description:
+      "Reserved for your strongest real computer-vision, depth, point-cloud or inspection project and its measured results.",
+    technologies: ["Python", "OpenCV", "Vision"],
+    status: "Add Project",
+    href: "#",
+    visual: "project-vision-visual",
   },
 ];
 
-export default function Projects() {
+export default function ProjectsPage() {
   return (
-    <main className="min-h-screen bg-[#070b14] text-white">
-      <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-        <a href="/" className="text-sm text-zinc-500 hover:text-white">
-          ← Home
-        </a>
+    <main className="portfolio">
+      <Navbar />
 
-        <p className="mt-16 font-mono text-xs uppercase tracking-[0.2em] text-cyan-400">
-          Selected Work
-        </p>
+      <section className="page-hero">
+        <div className="site-container page-hero-grid">
+          <div>
+            <p className="eyebrow">Selected Work</p>
+            <h1 className="page-title">
+              Projects built
+              <br />
+              <span>to learn by doing.</span>
+            </h1>
+          </div>
 
-        <h1 className="mt-4 text-5xl font-semibold tracking-tight">
-          Projects
-        </h1>
+          <div className="page-hero-aside">
+            <p>
+              Systems and experiments across civil engineering, embedded
+              computing, robotics, data and artificial intelligence.
+            </p>
+          </div>
+        </div>
+      </section>
 
-        <p className="mt-5 max-w-2xl leading-7 text-zinc-400">
-          Systems and experiments I&apos;m building while exploring embedded
-          computing, artificial intelligence, software, and engineering.
-        </p>
+      <section className="projects-index section-paper">
+        <div className="site-container projects-list">
+          {projects.map((project) => {
+            const card = (
+              <>
+                <div className={`project-index-visual ${project.visual}`}>
+                  <span>{project.status}</span>
+                </div>
 
-        <div className="mt-16 grid gap-6">
-          {projects.map((project) => (
-            <a
-              key={project.title}
-              href={project.href}
-              className="group rounded-2xl border border-white/10 bg-white/[0.03] p-8 transition hover:border-cyan-400/40"
-            >
-              <div className="flex items-center justify-between">
-                <span className="text-xs text-amber-300">
-                  {project.status}
-                </span>
+                <div className="project-index-copy">
+                  <div className="project-index-meta">
+                    <span>{project.index}</span>
+                    <span>{project.status}</span>
+                  </div>
 
-                <span className="text-zinc-600 transition group-hover:text-cyan-400">
-                  →
-                </span>
-              </div>
+                  <h2>{project.title}</h2>
+                  <h3>{project.subtitle}</h3>
+                  <p>{project.description}</p>
 
-              <h2 className="mt-6 text-3xl font-semibold">
-                {project.title}
-              </h2>
+                  <div className="project-tags">
+                    {project.technologies.map((tech) => (
+                      <span key={tech}>{tech}</span>
+                    ))}
+                  </div>
+                </div>
 
-              <p className="mt-2 text-zinc-300">
-                {project.subtitle}
-              </p>
+                <span className="project-index-arrow" aria-hidden="true">→</span>
+              </>
+            );
 
-              <p className="mt-5 max-w-3xl leading-7 text-zinc-500">
-                {project.description}
-              </p>
-
-              <div className="mt-7 flex flex-wrap gap-2">
-                {project.technologies.map((tech) => (
-                  <span
-                    key={tech}
-                    className="rounded-full border border-white/10 px-3 py-1 text-xs text-zinc-400"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </a>
-          ))}
+            return (
+              <Reveal key={project.index}>
+                {project.href === "#" ? (
+                  <article className="project-index-row is-placeholder">
+                    {card}
+                  </article>
+                ) : (
+                  <Link href={project.href} className="project-index-row">
+                    {card}
+                  </Link>
+                )}
+              </Reveal>
+            );
+          })}
         </div>
       </section>
     </main>

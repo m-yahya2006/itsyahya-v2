@@ -1,64 +1,66 @@
 import type { Metadata } from "next";
+import { IBM_Plex_Mono, Inter, Manrope } from "next/font/google";
 import "./globals.css";
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const manrope = Manrope({
+  variable: "--font-manrope",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://itsyahya.com"),
-
   title: {
     default: "Yahya | Civil Engineering × Intelligent Systems",
     template: "%s | Yahya",
   },
-
   description:
-    "Portfolio of Yahya, a Civil Engineering student at GIKI exploring embedded systems, machine learning, robotics, software, and intelligent engineering systems.",
-
+    "Portfolio of Muhammad Yahya, a Civil Engineering student at GIKI exploring intelligent systems, embedded computing, robotics, sensing, data and machine learning.",
   keywords: [
-    "Yahya",
+    "Muhammad Yahya",
     "Civil Engineering",
     "GIKI",
     "Embedded Systems",
-    "Machine Learning",
     "Robotics",
+    "Machine Learning",
     "ESP32",
-    "Python",
-    "C++",
-    "AEVNS",
     "Engineering Portfolio",
+    "AEVNS",
   ],
-
-  authors: [{ name: "Yahya" }],
-  creator: "Yahya",
-
+  authors: [{ name: "Muhammad Yahya" }],
+  creator: "Muhammad Yahya",
   openGraph: {
     title: "Yahya | Civil Engineering × Intelligent Systems",
     description:
-      "Building intelligent systems for the physical world through civil engineering, AI, robotics, embedded systems, and software.",
+      "Exploring the intersection of physical engineering, sensing, embedded systems, robotics and machine intelligence.",
     url: "https://itsyahya.com",
-    siteName: "Yahya Portfolio",
+    siteName: "Yahya",
     type: "website",
   },
-
-  twitter: {
-    card: "summary_large_image",
-    title: "Yahya | Civil Engineering × Intelligent Systems",
-    description:
-      "Civil Engineering student exploring AI, robotics, embedded systems, and intelligent infrastructure.",
-  },
-
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={`${inter.variable} ${manrope.variable} ${plexMono.variable}`}>
+        {children}
+      </body>
     </html>
   );
 }

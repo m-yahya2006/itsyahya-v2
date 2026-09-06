@@ -1,58 +1,82 @@
+import Navbar from "@/components/Navbar";
+
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-[#070b14] text-white">
-      <section className="mx-auto max-w-5xl px-6 py-20 lg:px-8">
-        <a
-          href="/"
-          className="text-sm text-zinc-500 transition hover:text-white"
-        >
-          ← Home
-        </a>
+    <main className="portfolio">
+      <Navbar />
 
-        <p className="mt-16 font-mono text-xs uppercase tracking-[0.2em] text-cyan-400">
-          Contact
-        </p>
+      <section className="page-hero contact-hero">
+        <div className="site-container page-hero-grid">
+          <div>
+            <p className="eyebrow">Contact</p>
+            <h1 className="page-title">
+              Let&apos;s build
+              <br />
+              <span>something meaningful.</span>
+            </h1>
+          </div>
 
-        <h1 className="mt-4 text-5xl font-semibold tracking-tight sm:text-6xl">
-          Let&apos;s connect.
-        </h1>
-
-        <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-400">
-          Open to internships, collaborations, engineering opportunities, and
-          interesting technical projects.
-        </p>
-
-        <div className="mt-12 grid gap-4 sm:grid-cols-2">
-          {/* Email */}
-          <a
-            href="mailto:m.yahyaa.2006@gmail.com"
-            className="group rounded-xl border border-white/10 bg-white/[0.03] p-6 transition hover:border-cyan-400/40"
-          >
-            <p className="text-sm text-zinc-500">Email</p>
-
-            <p className="mt-2 font-semibold text-zinc-200 transition group-hover:text-cyan-400">
-              m.yahyaa.2006@gmail.com
+          <div className="page-hero-aside">
+            <p>
+              I&apos;m open to internships, engineering collaborations,
+              research-oriented conversations and technical projects where I can
+              learn, contribute and build.
             </p>
-          </a>
+          </div>
+        </div>
+      </section>
 
-          {/* GitHub */}
-          <a
-            href="https://github.com/m-yahya2006"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group rounded-xl border border-white/10 bg-white/[0.03] p-6 transition hover:border-cyan-400/40"
-          >
-            <p className="text-sm text-zinc-500">GitHub</p>
-
-            <p className="mt-2 font-semibold text-zinc-200 transition group-hover:text-cyan-400">
-              github.com/m-yahya2006 ↗
+      <section className="contact-main section-paper">
+        <div className="site-container contact-grid">
+          <div>
+            <p className="eyebrow">Get In Touch</p>
+            <h2 className="section-heading">
+              The easiest way to reach me is by email.
+            </h2>
+            <p className="body-large">
+              If you&apos;re contacting me about an internship, project or
+              collaboration, include a little context and I&apos;ll get back to
+              you as soon as I can.
             </p>
+          </div>
+
+          <div className="contact-links">
+            <a href="mailto:m.yahyaa.2006@gmail.com" className="contact-link contact-link-email">
+              <span>Email</span>
+              <strong>m.yahyaa.2006@gmail.com</strong>
+              <b aria-hidden="true">→</b>
+            </a>
+
+            <a
+              href="https://github.com/m-yahya2006"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-link contact-link-github"
+            >
+              <span>GitHub</span>
+              <strong>github.com/m-yahya2006</strong>
+              <b aria-hidden="true">↗</b>
+            </a>
+
+            <div className="contact-link contact-link-muted">
+              <span>LinkedIn</span>
+              <strong>Profile link will be added here.</strong>
+              <b>—</b>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="home-contact-banner contact-banner">
+        <div className="site-container home-contact-inner">
+          <div>
+            <p className="eyebrow light-eyebrow">Availability</p>
+            <h2>Open to the right opportunities and meaningful collaborations.</h2>
+          </div>
+          <a href="mailto:m.yahyaa.2006@gmail.com" className="button home-contact-button">
+            Send an Email <span aria-hidden="true">→</span>
           </a>
         </div>
-
-        <p className="mt-8 text-sm text-zinc-600">
-          LinkedIn will be added later.
-        </p>
       </section>
     </main>
   );

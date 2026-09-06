@@ -1,208 +1,327 @@
+import Link from "next/link";
+import Navbar from "@/components/Navbar";
+import Reveal from "@/components/Reveal";
+import TechRibbon from "@/components/TechRibbon";
+
+const expertise = [
+  {
+    title: "Civil Engineering",
+    text: "Structures, infrastructure and sustainable built environments.",
+    icon: "bridge",
+  },
+  {
+    title: "Embedded Systems",
+    text: "Sensors, microcontrollers and real-time solutions.",
+    icon: "chip",
+  },
+  {
+    title: "Data & AI",
+    text: "From data collection to machine learning and intelligent decisions.",
+    icon: "data",
+  },
+  {
+    title: "Impact",
+    text: "Applying technology to practical engineering challenges.",
+    icon: "leaf",
+  },
+];
+
+const selectedProjects = [
+  {
+    title: "Structural Analysis Study",
+    subtitle: "Sustainable infrastructure solutions",
+    type: "STRUCTURES",
+    visual: "bridge",
+    href: "/projects",
+  },
+  {
+    title: "IoT Monitoring System",
+    subtitle: "Real-time data for smarter decisions",
+    type: "EMBEDDED",
+    visual: "electronics",
+    href: "/projects",
+  },
+  {
+    title: "Computer Vision for Inspection",
+    subtitle: "AI for real-world engineering challenges",
+    type: "VISION",
+    visual: "vision",
+    href: "/projects",
+  },
+];
+
+function ExpertiseIcon({ type }: { type: string }) {
+  if (type === "bridge") {
+    return (
+      <svg viewBox="0 0 48 48" aria-hidden="true">
+        <path d="M5 32h38M10 32c5-9 9-14 14-14s9 5 14 14M24 10v22M9 17h30" />
+      </svg>
+    );
+  }
+  if (type === "chip") {
+    return (
+      <svg viewBox="0 0 48 48" aria-hidden="true">
+        <rect x="14" y="14" width="20" height="20" rx="2" />
+        <path d="M19 5v9M29 5v9M19 34v9M29 34v9M5 19h9M5 29h9M34 19h9M34 29h9" />
+      </svg>
+    );
+  }
+  if (type === "data") {
+    return (
+      <svg viewBox="0 0 48 48" aria-hidden="true">
+        <path d="M8 38V25h7v13M21 38V16h7v22M34 38V8h7v30" />
+      </svg>
+    );
+  }
+  return (
+    <svg viewBox="0 0 48 48" aria-hidden="true">
+      <path d="M39 9C22 9 11 17 11 30c0 6 4 9 9 9 13 0 19-13 19-30Z" />
+      <path d="M10 40c6-10 13-16 23-22" />
+    </svg>
+  );
+}
+
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#070b14] text-white">
-      {/* Navigation */}
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 lg:px-8">
-        <a href="/" className="text-xl font-semibold tracking-tight">
-          YAHYA<span className="text-cyan-400">.</span>
-        </a>
+    <main className="portfolio">
+      <Navbar />
 
-        <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-400 sm:gap-6 md:gap-8">
-          <a className="transition hover:text-white" href="/projects">
-            Projects
-          </a>
-
-          <a className="transition hover:text-white" href="/about">
-            About
-          </a>
-
-          <a className="transition hover:text-white" href="#skills">
-            Skills
-          </a>
-
-          <a className="transition hover:text-white" href="/contact">
-            Contact
-          </a>
-        </div>
-      </nav>
-
-      {/* Hero */}
-      <section className="mx-auto flex min-h-[78vh] max-w-7xl items-center px-6 lg:px-8">
-        <div className="max-w-4xl">
-          <p className="mb-5 font-mono text-sm uppercase tracking-[0.2em] text-cyan-400">
-            Civil Engineering × Intelligent Systems
-          </p>
-
-          <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
-            Building intelligent systems
-            <br />
-            for the{" "}
-            <span className="text-zinc-500">physical world.</span>
-          </h1>
-
-          <p className="mt-7 max-w-2xl text-lg leading-8 text-zinc-400">
-            I&apos;m Yahya, a Civil Engineering student at GIKI exploring the
-            intersection of embedded systems, artificial intelligence,
-            robotics, software, and infrastructure engineering.
-          </p>
-
-          <div className="mt-9 flex flex-wrap gap-4">
-            <a
-              href="/projects"
-              className="rounded-lg bg-cyan-400 px-6 py-3 text-sm font-semibold text-[#070b14] transition hover:bg-cyan-300"
-            >
-              View My Work
-            </a>
-
-            <a
-              href="https://github.com/m-yahya2006"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-lg border border-zinc-700 px-6 py-3 text-sm font-semibold transition hover:border-zinc-500 hover:bg-white/5"
-            >
-              GitHub ↗
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Project */}
-      <section
-        id="projects"
-        className="mx-auto max-w-7xl border-t border-white/10 px-6 py-24 lg:px-8"
-      >
-        <div className="mb-10">
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-cyan-400">
-            Featured Project
-          </p>
-
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-            AEVNS
-          </h2>
-        </div>
-
-        <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-8 transition duration-300 hover:-translate-y-1 hover:border-cyan-400/30 sm:p-10">
-          <div className="flex flex-wrap gap-2">
-            {[
-              "ESP32",
-              "C++",
-              "Python",
-              "Machine Learning",
-              "Embedded Systems",
-              "UDP",
-            ].map((technology) => (
-              <span
-                key={technology}
-                className="rounded-full border border-white/10 px-3 py-1 text-xs text-zinc-400"
-              >
-                {technology}
-              </span>
-            ))}
-          </div>
-
-          <h3 className="mt-8 max-w-3xl text-2xl font-semibold sm:text-3xl">
-            Autonomous Electric Vehicle Navigation System
-          </h3>
-
-          <p className="mt-5 max-w-3xl leading-7 text-zinc-400">
-            An autonomous ground robot combining real-time navigation,
-            embedded sensing, hybrid solar-battery energy monitoring, wireless
-            telemetry, and machine-learning-based range prediction.
-          </p>
-
-          <div className="mt-8 flex items-center gap-4">
-            <span className="rounded-full bg-amber-400/10 px-3 py-1 text-xs font-medium text-amber-300">
-              In Progress
-            </span>
-
-            <span className="text-sm text-zinc-500">
-              Flagship Engineering Project
-            </span>
-          </div>
-
-          <a
-            href="/projects/aevns"
-            className="mt-8 inline-block text-sm font-semibold text-cyan-400 transition hover:text-cyan-300"
-          >
-            Explore AEVNS →
-          </a>
-        </div>
-      </section>
-
-      {/* About Preview */}
-      <section className="mx-auto max-w-7xl border-t border-white/10 px-6 py-24 lg:px-8">
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-cyan-400">
-          About
-        </p>
-
-        <h2 className="mt-4 max-w-3xl text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
-          Engineering beyond traditional boundaries.
-        </h2>
-
-        <p className="mt-6 max-w-2xl leading-7 text-zinc-400">
-          My degree is in Civil Engineering, but my interests extend into
-          intelligent systems. I&apos;m building practical projects to
-          understand how computation, sensing, automation, and AI can interact
-          with the physical environment.
-        </p>
-
-        <a
-          href="/about"
-          className="mt-6 inline-block text-sm font-semibold text-cyan-400 transition hover:text-cyan-300"
-        >
-          More About Me →
-        </a>
-      </section>
-
-      {/* Skills */}
-      <section
-        id="skills"
-        className="mx-auto max-w-7xl border-t border-white/10 px-6 py-24 lg:px-8"
-      >
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-cyan-400">
-          Currently Working With
-        </p>
-
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            "Python & Machine Learning",
-            "C++ & Embedded Systems",
-            "ESP32 & Sensors",
-            "Networking & Data",
-          ].map((skill) => (
-            <div
-              key={skill}
-              className="rounded-xl border border-white/10 bg-white/[0.02] p-5 text-sm text-zinc-300 transition duration-300 hover:-translate-y-1 hover:border-cyan-400/30"
-            >
-              {skill}
+      <section className="home-hero">
+        <div className="site-container home-hero-grid">
+          <div className="home-hero-copy">
+            <div className="hero-load hero-load-1">
+              <p className="eyebrow">Civil Engineering · Embedded Systems · AI & Data</p>
             </div>
+
+            <div className="hero-load hero-load-2">
+              <h1 className="home-hero-title">
+                Engineering
+                <br />
+                for a Smarter
+                <br />
+                <span>Tomorrow</span>
+              </h1>
+            </div>
+
+            <div className="hero-load hero-load-3">
+              <p className="body-large home-hero-intro">
+                I&apos;m Muhammad Yahya, a Civil Engineering student at GIKI
+                exploring intelligent systems, robotics and data-driven solutions
+                that connect the physical and digital worlds.
+              </p>
+            </div>
+
+            <div className="hero-tech-rail hero-load hero-load-4">
+              <span className="tech-pill tech-pill-blue">STRUCTURES</span>
+              <span className="tech-pill tech-pill-orange">SENSORS</span>
+              <span className="tech-pill tech-pill-teal">ESP32</span>
+              <span className="tech-pill tech-pill-gold">ML</span>
+            </div>
+
+            <div className="home-hero-actions hero-load hero-load-4">
+              <Link href="/projects" className="button button-primary">
+                Explore My Work <span aria-hidden="true">→</span>
+              </Link>
+              <Link href="/about" className="button button-secondary">
+                About Me
+              </Link>
+            </div>
+
+            <div className="home-stats hero-load hero-load-5" aria-label="Profile highlights">
+              <div><strong>4+</strong><span>Projects</span></div>
+              <div><strong>3+</strong><span>Domains</span></div>
+              <div><strong>Continuous</strong><span>Learning</span></div>
+              <div><strong>Global</strong><span>Perspective</span></div>
+            </div>
+          </div>
+
+          <div className="home-hero-visual hero-load hero-load-image">
+            <div className="hero-image-shade" />
+            <div className="image-note image-note-top">
+              INFRASTRUCTURE<br />TECHNOLOGY<br />PEOPLE<br />A BRIGHTER FUTURE
+            </div>
+            <div className="image-note image-note-bottom">
+              REAL PROBLEMS.<br />PRACTICAL SOLUTIONS.
+            </div>
+            <div className="hero-image-caption">
+              <span>01</span>
+              <p>Infrastructure as the physical layer of intelligent systems.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <TechRibbon />
+
+      <section className="expertise-strip">
+        <div className="site-container expertise-grid">
+          {expertise.map((item, index) => (
+            <Reveal key={item.title} delay={index * 90} className="expertise-reveal">
+              <article className={`expertise-item expertise-tone-${index + 1}`}>
+                <div className="expertise-icon">
+                  <ExpertiseIcon type={item.icon} />
+                </div>
+                <h2>{item.title}</h2>
+                <p>{item.text}</p>
+                <Link href="/about" className="text-link">
+                  Learn more <span aria-hidden="true">→</span>
+                </Link>
+              </article>
+            </Reveal>
           ))}
         </div>
       </section>
 
-      {/* Contact Preview */}
-      <section className="mx-auto max-w-7xl border-t border-white/10 px-6 py-24 lg:px-8">
-        <h2 className="text-3xl font-semibold tracking-tight">
-          Let&apos;s build something meaningful.
-        </h2>
+      <section className="featured-home">
+        <div className="site-container">
+          <Reveal>
+            <div className="featured-kicker">
+              <span>FEATURED PROJECT</span>
+              <span className="featured-rule" />
+              <span>01 / 03</span>
+            </div>
+          </Reveal>
 
-        <p className="mt-4 text-zinc-400">
-          Open to internships, collaborations, engineering opportunities, and
-          interesting technical projects.
-        </p>
+          <div className="featured-home-grid">
+            <Reveal>
+              <div className="featured-copy">
+                <h2>
+                  Autonomous
+                  <br />
+                  <span>EV Navigation System</span>
+                </h2>
+                <p>
+                  A self-designed autonomous ground robot combining embedded
+                  systems, navigation, solar-battery monitoring, telemetry and
+                  machine learning — with future applications in infrastructure
+                  inspection.
+                </p>
 
-        <a
-          href="/contact"
-          className="mt-6 inline-block text-sm font-semibold text-cyan-400 transition hover:text-cyan-300"
-        >
-          Get in Touch →
-        </a>
+                <Link href="/projects/aevns" className="button button-primary">
+                  View Project <span aria-hidden="true">→</span>
+                </Link>
+
+                <div className="featured-capabilities">
+                  <span>Autonomous Navigation</span>
+                  <span>Energy Monitoring</span>
+                  <span>Wireless Telemetry</span>
+                  <span>Modular Design</span>
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal delay={120}>
+              <div className="prototype-stage">
+                <div className="prototype-stage-label">
+                  <span>PROTOTYPE / IN DEVELOPMENT</span>
+                  <span>AEVNS / 2026</span>
+                </div>
+                <div className="prototype-placeholder">
+                  <div className="prototype-silhouette" aria-hidden="true">
+                    <div className="proto-roof" />
+                    <div className="proto-body" />
+                    <div className="proto-wheel proto-wheel-left" />
+                    <div className="proto-wheel proto-wheel-right" />
+                  </div>
+                  <span className="prototype-plus">+</span>
+                  <p>Final prototype photography will be added after build completion.</p>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
       </section>
 
-      {/* Footer */}
-      <footer className="mx-auto flex max-w-7xl justify-between border-t border-white/10 px-6 py-8 text-xs text-zinc-600 lg:px-8">
-        <span>© 2026 Yahya</span>
-        <span>GIKI · Pakistan</span>
+      <section className="editorial-about">
+        <div className="site-container editorial-about-grid">
+          <Reveal className="editorial-copy">
+            <p className="eyebrow">Turning Ideas Into Real Solutions</p>
+            <p className="body-large">
+              I enjoy exploring how engineering, data and technology come
+              together to solve meaningful problems.
+            </p>
+            <Link href="/about" className="button button-primary">
+              More About Me <span aria-hidden="true">→</span>
+            </Link>
+          </Reveal>
+
+          <Reveal delay={100} className="architecture-image" />
+
+          <Reveal delay={180}>
+            <blockquote className="editorial-quote">
+              <span>“</span>
+              Curiosity
+              <br />
+              builds bridges
+              <br />
+              between ideas.
+              <cite>— Muhammad Yahya</cite>
+            </blockquote>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="selected-work">
+        <div className="site-container">
+          <div className="selected-work-head">
+            <p className="eyebrow">Selected Projects</p>
+            <Link href="/projects" className="text-link">
+              View all projects <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+
+          <div className="selected-work-grid">
+            {selectedProjects.map((project, index) => (
+              <Reveal key={project.title} delay={index * 90}>
+                <Link href={project.href} className="project-card">
+                  <div className={`project-card-visual project-card-${project.visual}`}>
+                    <span>{project.type}</span>
+                    <small>Reference visual — replace with your project image</small>
+                  </div>
+                  <div className="project-card-copy">
+                    <div>
+                      <h3>{project.title}</h3>
+                      <p>{project.subtitle}</p>
+                    </div>
+                    <span aria-hidden="true">→</span>
+                  </div>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="home-contact-banner">
+        <div className="site-container home-contact-inner">
+          <Reveal>
+            <div>
+              <p className="eyebrow light-eyebrow">Let&apos;s Collaborate</p>
+              <h2>Open to opportunities, collaborations and meaningful conversations.</h2>
+            </div>
+          </Reveal>
+          <Reveal delay={120}>
+            <Link href="/contact" className="button home-contact-button">
+              Get in Touch <span aria-hidden="true">→</span>
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
+      <footer className="site-footer">
+        <div className="site-container site-footer-grid">
+          <Link href="/" className="nav-brand-name">
+            YAHYA<span className="nav-brand-mark">.</span>
+          </Link>
+          <nav aria-label="Footer navigation">
+            <Link href="/">Home</Link>
+            <Link href="/about">About</Link>
+            <Link href="/projects">Projects</Link>
+            <Link href="/journey">Journey</Link>
+            <Link href="/contact">Contact</Link>
+          </nav>
+          <p>© 2026 Muhammad Yahya. All rights reserved.</p>
+        </div>
       </footer>
     </main>
   );
