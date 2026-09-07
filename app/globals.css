@@ -150,7 +150,20 @@ h1, h2, h3, h4 {
   align-items: center;
   gap: 40px;
 }
-.nav-brand { justify-self: start; display: inline-flex; align-items: baseline; width: fit-content; }
+.nav-brand {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+}
+
+.nav-logo {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
 .nav-brand-name {
   font-family: var(--font-manrope), sans-serif;
   font-size: 1rem;
@@ -658,6 +671,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--teal); outline-
 @media (max-width: 700px) {
   :root { --page-space: 20px; --section-space: 80px; }
   .nav-layout { min-height: 68px; }
+  .nav-logo { width: 34px; height: 34px; }
   .nav-cta { min-height: 38px; padding-inline: 14px; font-size: .72rem; }
   .home-hero-copy { padding-right: 0; }
   .home-stats { grid-template-columns: repeat(2,1fr); gap: 18px 0; }

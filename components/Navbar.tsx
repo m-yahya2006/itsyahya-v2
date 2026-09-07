@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const navigation = [
@@ -12,7 +13,16 @@ export default function Navbar() {
   return (
     <header className="site-nav">
       <div className="site-container nav-layout">
-        <Link href="/" className="nav-brand" aria-label="Yahya — Home">
+        <Link href="/" className="nav-brand" aria-label="Muhammad Yahya — Home">
+          <Image
+            src="/logo-transparent.png"
+            alt="Muhammad Yahya logo"
+            width={56}
+            height={56}
+            priority
+            className="nav-logo"
+          />
+
           <span className="nav-brand-name">
             YAHYA<span className="nav-brand-mark">.</span>
           </span>
