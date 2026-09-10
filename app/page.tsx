@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Reveal from "@/components/Reveal";
 
@@ -83,11 +82,15 @@ export default function Home() {
               </div>
             </Reveal>
             <Reveal>
-              <div className="prototype-stage">
-                <div className="prototype-stage-label"><span>CONCEPT VISUALIZATION / IN DEVELOPMENT</span><span>AEVNS-CI / 2026</span></div>
-                <div className="concept-visual-wrap">
-                  <Image src="/projects/aevns/slope-rover-concept.png" alt="Concept visualization of the planned 4WD solar-assisted slope-condition monitoring rover" width={1536} height={1024} className="concept-visual" priority />
-                  <span className="concept-badge">CONCEPT — NOT FINAL PROTOTYPE</span>
+              <div
+                className="featured-rover-visual"
+                role="img"
+                aria-label="AI-generated visual of a solar-assisted 4WD rover inspecting a slope"
+              >
+                <div className="featured-rover-shade" />
+                <div className="featured-rover-meta">
+                  <span>AEVNS-CI / IN DEVELOPMENT</span>
+                  <span>SLOPE · SOIL · VISION · TELEMETRY</span>
                 </div>
               </div>
             </Reveal>
@@ -115,7 +118,7 @@ export default function Home() {
           <div className="selected-work-grid single-project-grid">
             <Reveal>
               <Link href="/projects/aevns" className="project-card single-project-card">
-                <div className="project-card-visual project-card-aevns"><span>CIVIL × ROBOTICS</span><small>Concept visualization — project in development</small></div>
+                <div className="project-card-visual project-card-aevns"><span>CIVIL × ROBOTICS</span><small>PROJECT IN DEVELOPMENT</small></div>
                 <div className="project-card-copy"><div><h3>AEVNS-CI</h3><p>Autonomous slope-condition monitoring rover</p></div><span>→</span></div>
               </Link>
             </Reveal>

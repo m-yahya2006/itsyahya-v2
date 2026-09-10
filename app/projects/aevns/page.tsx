@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Reveal from "@/components/Reveal";
@@ -35,7 +34,14 @@ export default function AevnsPage() {
           <Link href="/projects" className="aevns-back">← Back to Projects</Link>
           <div className="aevns-hero-grid aevns-hero-enter">
             <div><p className="eyebrow light-eyebrow">Flagship Project · In Development</p><h1>AEVNS-CI</h1><h2>Autonomous Solar-Assisted Rover for Preliminary Slope-Condition Inspection</h2><p>A Civil Engineering student prototype designed to scout controlled slope test areas, observe slope inclination, soil moisture and visible ground cracks, and transmit field data for logging and later analysis.</p><div className="aevns-tags">{["Civil Engineering","ESP32","4WD","MPU6050","Soil Moisture","ESP32-CAM","UDP"].map(x=><span key={x}>{x}</span>)}</div></div>
-            <div className="aevns-concept-card"><Image src="/projects/aevns/slope-rover-concept.png" alt="Concept visualization of AEVNS-CI 4WD solar-assisted slope monitoring rover" width={1536} height={1024}/><div className="aevns-concept-caption"><span>CONCEPT VISUALIZATION</span><small>System in development — not final prototype photography</small></div></div>
+            <div
+              className="aevns-rover-visual"
+              role="img"
+              aria-label="AI-generated visual of a solar-assisted 4WD rover on a slope"
+            >
+              <div className="aevns-rover-overlay" />
+              <div className="aevns-rover-meta"><span>AEVNS-CI</span><span>4WD · SOLAR ASSIST · FIELD SENSING</span></div>
+            </div>
           </div>
         </div>
       </section>
