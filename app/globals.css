@@ -1463,3 +1463,170 @@ p { text-wrap: pretty; }
   .architecture-grid-wide { grid-template-columns: 1fr; }
   .project-card-aevns { min-height: 230px; }
 }
+
+/* =========================================================
+   AEVNS refinement — traced home placeholders + blended case-study hero
+   ========================================================= */
+
+/* Home featured project: intentionally unfinished visual, not a fake product photo. */
+.featured-home-grid {
+  grid-template-columns: minmax(0, 1.12fr) minmax(340px, .88fr);
+  gap: clamp(36px, 5vw, 68px);
+}
+.featured-rover-placeholder {
+  min-height: 300px;
+  border: 1px dashed rgba(24,37,43,.22);
+  background:
+    linear-gradient(rgba(24,37,43,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(24,37,43,.035) 1px, transparent 1px),
+    rgba(251,250,247,.48);
+  background-size: 32px 32px;
+  overflow: hidden;
+  position: relative;
+}
+
+.rover-trace {
+  min-height: 300px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  color: rgba(34,85,88,.48);
+  padding: 22px;
+}
+.rover-trace svg {
+  width: min(94%, 680px);
+  height: auto;
+  filter: drop-shadow(0 14px 30px rgba(24,37,43,.035));
+}
+.rover-trace-note {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: 18px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: end;
+  font-family: var(--font-plex-mono), monospace;
+}
+.rover-trace-note span {
+  font-size: .5rem;
+  letter-spacing: .12em;
+  color: var(--teal);
+}
+.rover-trace-note strong {
+  max-width: 300px;
+  text-align: right;
+  font-size: .52rem;
+  line-height: 1.45;
+  letter-spacing: .05em;
+  font-weight: 500;
+  color: rgba(24,37,43,.52);
+}
+
+/* Selected Project at the end of the home page: compact, calm, same placeholder language. */
+.single-project-grid { max-width: 840px; }
+.single-project-card { max-width: 840px; }
+.project-card-aevns-placeholder {
+  min-height: 200px;
+  background:
+    linear-gradient(rgba(24,37,43,.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(24,37,43,.028) 1px, transparent 1px),
+    linear-gradient(150deg, rgba(53,109,103,.045), rgba(251,250,247,.65));
+  background-size: 30px 30px, 30px 30px, auto;
+}
+.project-card-aevns-placeholder > span {
+  z-index: 3;
+}
+.project-card-aevns-placeholder .rover-trace-compact {
+  min-height: 200px;
+  padding: 8px 16px 2px;
+  color: rgba(34,85,88,.34);
+}
+.project-card-aevns-placeholder .rover-trace-compact svg {
+  width: min(72%, 470px);
+  transform: translateY(8px);
+}
+.project-card-aevns-placeholder .rover-trace-note {
+  left: auto;
+  right: 16px;
+  bottom: 12px;
+}
+.project-card-aevns-placeholder .rover-trace-note span { display: none; }
+.project-card-aevns-placeholder .rover-trace-note strong {
+  max-width: 260px;
+  font-size: .46rem;
+  color: rgba(24,37,43,.42);
+}
+
+/* AEVNS detail hero: the rover scene is part of the section background, not a boxed image. */
+.aevns-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 700px;
+  padding: 72px 0 96px;
+  isolation: isolate;
+}
+.aevns-hero::after { display: none; }
+.aevns-hero-transition {
+  position: absolute;
+  z-index: -1;
+  inset: 0 0 0 38%;
+  background-image:
+    linear-gradient(90deg, var(--ink) 0%, rgba(24,37,43,.94) 10%, rgba(24,37,43,.52) 33%, rgba(24,37,43,.13) 64%, rgba(24,37,43,.18) 100%),
+    linear-gradient(to top, rgba(10,29,34,.58), rgba(10,29,34,.04) 58%),
+    url('/projects/aevns/rover-inspection-transition.png');
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.035);
+  filter: saturate(.8) contrast(1.04) brightness(.78);
+}
+.aevns-hero-transition::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 76% 55%, rgba(104,191,196,.16), transparent 26%),
+    linear-gradient(180deg, rgba(255,255,255,.02), transparent 42%);
+}
+.aevns-hero-grid {
+  grid-template-columns: minmax(0, 760px) 1fr;
+  min-height: 520px;
+  align-items: center;
+}
+.aevns-hero-copy {
+  position: relative;
+  z-index: 2;
+  padding-right: clamp(20px, 4vw, 58px);
+}
+.aevns-hero-copy::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -60px -120px -60px -12vw;
+  background: linear-gradient(90deg, var(--ink) 0%, var(--ink) 70%, rgba(24,37,43,.84) 84%, transparent 100%);
+}
+
+@media (max-width: 1000px) {
+  .featured-home-grid { grid-template-columns: 1fr; }
+  .featured-rover-placeholder { min-height: 280px; }
+  .aevns-hero { min-height: 760px; }
+  .aevns-hero-transition {
+    inset: 42% 0 0 0;
+    background-image:
+      linear-gradient(to bottom, var(--ink) 0%, rgba(24,37,43,.4) 28%, rgba(24,37,43,.12) 60%),
+      linear-gradient(to top, rgba(10,29,34,.56), transparent 58%),
+      url('/projects/aevns/rover-inspection-transition.png');
+  }
+  .aevns-hero-grid { grid-template-columns: 1fr; min-height: 600px; align-items: start; }
+  .aevns-hero-copy::after { inset: -40px -20px -30px -20px; background: linear-gradient(to bottom, var(--ink) 0%, rgba(24,37,43,.96) 72%, transparent); }
+}
+
+@media (max-width: 700px) {
+  .rover-trace-note { flex-direction: column; align-items: flex-start; }
+  .rover-trace-note strong { text-align: left; }
+  .project-card-aevns-placeholder { min-height: 180px; }
+  .project-card-aevns-placeholder .rover-trace-compact { min-height: 180px; }
+  .project-card-aevns-placeholder .rover-trace-note { display: none; }
+  .aevns-hero { min-height: 720px; padding-bottom: 70px; }
+}

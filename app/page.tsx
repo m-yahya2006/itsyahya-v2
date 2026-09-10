@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Reveal from "@/components/Reveal";
+import RoverTrace from "@/components/RoverTrace";
 
 const expertise = [
   ["01", "Civil Engineering", "Structures, infrastructure and the built environment remain the engineering foundation."],
@@ -82,16 +83,8 @@ export default function Home() {
               </div>
             </Reveal>
             <Reveal>
-              <div
-                className="featured-rover-visual"
-                role="img"
-                aria-label="AI-generated visual of a solar-assisted 4WD rover inspecting a slope"
-              >
-                <div className="featured-rover-shade" />
-                <div className="featured-rover-meta">
-                  <span>AEVNS-CI / IN DEVELOPMENT</span>
-                  <span>SLOPE · SOIL · VISION · TELEMETRY</span>
-                </div>
+              <div className="featured-rover-placeholder">
+                <RoverTrace />
               </div>
             </Reveal>
           </div>
@@ -114,11 +107,14 @@ export default function Home() {
 
       <section className="selected-work">
         <div className="site-container">
-          <div className="selected-work-head"><p className="eyebrow">Selected Project</p><Link href="/projects" className="text-link">View project <span>→</span></Link></div>
+          <div className="selected-work-head"><p className="eyebrow">Selected Project</p><Link href="/projects" className="text-link">Open project <span>→</span></Link></div>
           <div className="selected-work-grid single-project-grid">
             <Reveal>
               <Link href="/projects/aevns" className="project-card single-project-card">
-                <div className="project-card-visual project-card-aevns"><span>CIVIL × ROBOTICS</span><small>PROJECT IN DEVELOPMENT</small></div>
+                <div className="project-card-visual project-card-aevns-placeholder">
+                  <span>CIVIL × ROBOTICS</span>
+                  <RoverTrace compact />
+                </div>
                 <div className="project-card-copy"><div><h3>AEVNS-CI</h3><p>Autonomous slope-condition monitoring rover</p></div><span>→</span></div>
               </Link>
             </Reveal>

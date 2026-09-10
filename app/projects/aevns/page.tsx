@@ -30,18 +30,11 @@ export default function AevnsPage() {
     <main className="portfolio">
       <Navbar />
       <section className="aevns-hero">
+        <div className="aevns-hero-transition" aria-hidden="true" />
         <div className="site-container">
           <Link href="/projects" className="aevns-back">← Back to Projects</Link>
           <div className="aevns-hero-grid aevns-hero-enter">
-            <div><p className="eyebrow light-eyebrow">Flagship Project · In Development</p><h1>AEVNS-CI</h1><h2>Autonomous Solar-Assisted Rover for Preliminary Slope-Condition Inspection</h2><p>A Civil Engineering student prototype designed to scout controlled slope test areas, observe slope inclination, soil moisture and visible ground cracks, and transmit field data for logging and later analysis.</p><div className="aevns-tags">{["Civil Engineering","ESP32","4WD","MPU6050","Soil Moisture","ESP32-CAM","UDP"].map(x=><span key={x}>{x}</span>)}</div></div>
-            <div
-              className="aevns-rover-visual"
-              role="img"
-              aria-label="AI-generated visual of a solar-assisted 4WD rover on a slope"
-            >
-              <div className="aevns-rover-overlay" />
-              <div className="aevns-rover-meta"><span>AEVNS-CI</span><span>4WD · SOLAR ASSIST · FIELD SENSING</span></div>
-            </div>
+            <div className="aevns-hero-copy"><p className="eyebrow light-eyebrow">Flagship Project · In Development</p><h1>AEVNS-CI</h1><h2>Autonomous Solar-Assisted Rover for Preliminary Slope-Condition Inspection</h2><p>A Civil Engineering student prototype designed to scout controlled slope test areas, observe slope inclination, soil moisture and visible ground cracks, and transmit field data for logging and later analysis.</p><div className="aevns-tags">{["Civil Engineering","ESP32","4WD","MPU6050","Soil Moisture","ESP32-CAM","UDP"].map(x=><span key={x}>{x}</span>)}</div></div>
           </div>
         </div>
       </section>
