@@ -1,6 +1,0 @@
-const data = [["SLOPE","18.4°"],["MOISTURE","42%"],["SOLAR","1.18 W"],["FRONT","76 cm"]];
-export default function TelemetryConcept(){return <div style={{borderRadius:24,padding:24,background:"#10231d",color:"white",boxShadow:"0 24px 70px rgba(10,25,20,.18)"}}>
-  <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:16,marginBottom:20}}><div><span style={{fontSize:10,letterSpacing:".14em",color:"#91c8b5"}}>INTERFACE CONCEPT</span><h3 style={{margin:"6px 0 0",fontSize:22}}>Field telemetry</h3></div><span style={{fontSize:11,padding:"6px 9px",border:"1px solid rgba(255,255,255,.18)",borderRadius:999}}>DEMO DATA</span></div>
-  <div style={{display:"grid",gridTemplateColumns:"repeat(2,minmax(0,1fr))",gap:10}}>{data.map(([a,b])=><div key={a} style={{padding:16,borderRadius:15,background:"rgba(255,255,255,.06)",border:"1px solid rgba(255,255,255,.08)"}}><span style={{fontSize:10,letterSpacing:".1em",opacity:.55}}>{a}</span><div style={{fontSize:23,marginTop:5}}>{b}</div></div>)}</div>
-  <div style={{marginTop:12,padding:"12px 14px",borderRadius:14,background:"rgba(255,255,255,.06)",fontSize:12,opacity:.72}}>Concept only — values are illustrative until the Civil sensors are integrated.</div>
-</div>}

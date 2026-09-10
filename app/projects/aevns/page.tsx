@@ -1,117 +1,60 @@
+import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Reveal from "@/components/Reveal";
-import SlopeRoverVisual from "@/components/SlopeRoverVisual";
-import SystemFlow from "@/components/SystemFlow";
-import TelemetryConcept from "@/components/TelemetryConcept";
 
 const architecture = [
-  ["Mobility", "4WD differential-drive rover for controlled soil, gravel and artificial-slope testing."],
-  ["Navigation", "Three ultrasonic sensors for obstacle awareness and autonomous movement."],
-  ["Civil sensing", "MPU6050 inclination, capacitive soil-moisture sensing and ESP32-CAM ground observation."],
-  ["Energy + data", "2S battery protection, solar-assisted charging, INA219 monitoring, Wi-Fi/UDP and Python logging."],
+  ["Mobility", "4WD differential-drive rover for controlled soil, gravel and artificial slope tests."],
+  ["Slope", "MPU6050 IMU for rover inclination and approximate slope-angle measurement."],
+  ["Soil", "Capacitive soil-moisture sensing at selected inspection locations."],
+  ["Vision", "ESP32-CAM + OV2640 for visible ground-crack image acquisition; heavier analysis runs off-board."],
+  ["Navigation", "Three ultrasonic sensors support obstacle awareness and autonomous movement decisions."],
+  ["Energy", "2S Li-ion pack with battery/solar INA219 monitoring and solar-assisted charging architecture."],
+  ["Telemetry", "ESP32 → Wi-Fi/UDP → Python → CSV for live measurements and experiment logging."],
+  ["Analysis", "Later data analysis may combine slope, moisture and crack observations into inspection-attention levels."],
 ];
 
 const progress = [
-  ["Complete", "ESP32 autonomous navigation and motor-control logic"],
-  ["Complete", "Three-direction ultrasonic obstacle sensing"],
-  ["Complete", "Battery, solar and temperature telemetry logic"],
-  ["Complete", "Wi-Fi/UDP data transmission to the computer"],
-  ["In progress", "4WD mechanical and electrical integration"],
-  ["Next", "Integrate MPU6050, soil-moisture sensing and ESP32-CAM"],
-  ["Later", "Controlled slope experiments, computer vision and attention-level analysis"],
+  ["Complete", "ESP32 motor-control and autonomous obstacle-avoidance logic"],
+  ["Complete", "Three-direction ultrasonic sensing"],
+  ["Complete", "Battery and solar INA219 monitoring"],
+  ["Complete", "DS18B20 temperature monitoring and safety logic"],
+  ["Complete", "Wi-Fi UDP telemetry and CSV-oriented data pipeline"],
+  ["In progress", "4WD mechanical integration and final power distribution"],
+  ["Next", "MPU6050 slope measurement and soil-moisture integration"],
+  ["Next", "ESP32-CAM ground-image acquisition and controlled slope experiments"],
+  ["Later", "Computer-vision crack analysis and data-driven inspection-attention model"],
 ];
 
 export default function AevnsPage() {
   return (
     <main className="portfolio">
       <Navbar />
-
       <section className="aevns-hero">
         <div className="site-container">
           <Link href="/projects" className="aevns-back">← Back to Projects</Link>
           <div className="aevns-hero-grid aevns-hero-enter">
-            <div>
-              <p className="eyebrow light-eyebrow">Flagship Project · In Development</p>
-              <h1>AEVNS-CI</h1>
-              <h2>Autonomous Slope-Condition Inspection Rover</h2>
-              <p>A low-cost, solar-assisted 4WD student rover being developed for preliminary slope-condition inspection and landslide-risk indication using slope inclination, soil moisture and visible ground-crack observations.</p>
-              <div className="aevns-tags">{["Civil Engineering","ESP32","C++","Python","4WD Robotics","Computer Vision"].map(i=><span key={i}>{i}</span>)}</div>
-            </div>
-            <SlopeRoverVisual />
+            <div><p className="eyebrow light-eyebrow">Flagship Project · In Development</p><h1>AEVNS-CI</h1><h2>Autonomous Solar-Assisted Rover for Preliminary Slope-Condition Inspection</h2><p>A Civil Engineering student prototype designed to scout controlled slope test areas, observe slope inclination, soil moisture and visible ground cracks, and transmit field data for logging and later analysis.</p><div className="aevns-tags">{["Civil Engineering","ESP32","4WD","MPU6050","Soil Moisture","ESP32-CAM","UDP"].map(x=><span key={x}>{x}</span>)}</div></div>
+            <div className="aevns-concept-card"><Image src="/projects/aevns/slope-rover-concept.png" alt="Concept visualization of AEVNS-CI 4WD solar-assisted slope monitoring rover" width={1536} height={1024}/><div className="aevns-concept-caption"><span>CONCEPT VISUALIZATION</span><small>System in development — not final prototype photography</small></div></div>
           </div>
         </div>
       </section>
 
-      <section className="aevns-overview">
-        <div className="site-container aevns-overview-grid">
-          <div><p className="eyebrow">Purpose</p><h2 className="section-heading">Collect useful surface indicators before detailed inspection.</h2></div>
-          <p className="body-large">The rover explores whether a compact autonomous platform can remotely collect a focused set of slope-condition observations. It is a student research and learning prototype, not professional geotechnical instrumentation and not a landslide-prediction system.</p>
-        </div>
-      </section>
+      <section className="aevns-overview"><div className="site-container aevns-overview-grid"><div><p className="eyebrow">Civil Engineering Aim</p><h2 className="section-heading">Inspect the condition of a slope before sending people everywhere.</h2></div><p className="body-large">The rover is being developed as a low-cost mobile scouting platform for preliminary slope-condition monitoring. It does not certify slope safety and does not predict when a landslide will occur. Its role is to collect observable indicators that can help identify locations deserving closer engineering investigation.</p></div></section>
 
-      <section className="section section-paper">
-        <div className="site-container">
-          <p className="eyebrow">System Architecture</p>
-          <div className="architecture-grid">{architecture.map(([t,d],i)=><Reveal key={t} delay={i*70}><article><span>0{i+1}</span><h3>{t}</h3><p>{d}</p></article></Reveal>)}</div>
-        </div>
-      </section>
+      <section className="section section-paper"><div className="site-container"><p className="eyebrow">Primary Indicators</p><div className="architecture-grid indicator-grid">{[["01","Slope inclination","MPU6050"],["02","Soil moisture","Capacitive probe"],["03","Visible ground cracks","ESP32-CAM / OV2640"]].map(([n,t,d])=><article key={n}><span>{n}</span><h3>{t}</h3><p>{d}</p></article>)}</div></div></section>
 
-      <section className="section">
-        <div className="site-container aevns-detail-grid">
-          <div><p className="eyebrow">Civil Engineering Focus</p><h2 className="section-heading">Three indicators. One inspection objective.</h2></div>
-          <div className="body-large"><p><strong>Slope inclination:</strong> MPU6050 orientation data provides an approximate local slope measurement during controlled testing.</p><p><strong>Soil moisture:</strong> a capacitive probe records relative wetness at selected test points.</p><p><strong>Visible ground cracks:</strong> an ESP32-CAM captures slope-surface imagery for later computer-vision experiments and repeat-observation comparison.</p></div>
-        </div>
-      </section>
+      <section className="section"><div className="site-container"><p className="eyebrow">System Architecture</p><div className="architecture-grid architecture-grid-wide">{architecture.map(([t,d],i)=><article key={t}><span>{String(i+1).padStart(2,"0")}</span><h3>{t}</h3><p>{d}</p></article>)}</div></div></section>
 
-      <section className="section section-paper">
-        <div className="site-container aevns-detail-grid">
-          <div><p className="eyebrow">Energy System</p><h2 className="section-heading">Solar-assisted, battery-powered.</h2></div>
-          <p className="body-large">Two Li-ion cells form a 2S pack. A balanced 2S BMS provides pack protection, while a CN3302-based boost charger supports charging from the small 6 V solar panel or a suitable low-voltage USB source. The 1.5 W panel is an energy-assist experiment; it is not presented as the rover&apos;s continuous power source. Two INA219 modules monitor battery and solar electrical data.</p>
-        </div>
-      </section>
+      <section className="section section-paper"><div className="site-container aevns-detail-grid"><div><p className="eyebrow">Power & Solar</p><h2 className="section-heading">Solar-assisted, battery-powered.</h2></div><p className="body-large">The rover uses two Li-ion cells as a 2S pack. Battery and solar electrical data are monitored with two INA219 sensors. The final charging path uses a 2S balanced BMS and a CN3302 boost-charging stage so the small 6 V, 1.5 W solar panel can provide supplementary charging. Solar is an energy-assist feature, not the rover&apos;s primary power source. Existing TP4056 boards are not part of the final 2S charging path.</p></div></section>
 
-      <section className="section">
-        <div className="site-container aevns-detail-grid">
-          <div><p className="eyebrow">Software & Telemetry</p><h2 className="section-heading">Physical measurements become structured data.</h2></div>
-          <p className="body-large">C++ firmware on the primary ESP32 handles autonomous navigation, obstacle sensing, power monitoring and telemetry. The rover sends UDP packets over Wi-Fi to a Python receiver on the computer, where measurements can be logged to CSV and displayed on a dashboard.</p>
-        </div>
-      </section>
+      <section className="section"><div className="site-container aevns-detail-grid"><div><p className="eyebrow">Software & Data</p><h2 className="section-heading">Real rover measurements become an experiment dataset.</h2></div><p className="body-large">ESP32 firmware handles navigation, sensing, energy monitoring and safety logic. Telemetry is sent over Wi-Fi using UDP to a Python receiver and can be stored in CSV form. New Civil Engineering measurements — slope inclination and soil moisture — will be added to this same pipeline, while camera images are handled separately by the ESP32-CAM.</p></div></section>
 
-      <section className="section section-paper">
-        <div className="site-container">
-          <p className="eyebrow">Data Flow</p><h2 className="section-heading">From physical slope to engineering evidence.</h2>
-          <SystemFlow />
-        </div>
-      </section>
+      <section className="section section-paper"><div className="site-container aevns-detail-grid"><div><p className="eyebrow">Computer Vision & ML</p><h2 className="section-heading">Planned analysis, not a finished prediction system.</h2></div><p className="body-large">The first computer-vision objective is visible ground-crack detection and later comparison of crack observations over time. After controlled experimental data is collected, a simple decision or machine-learning model may combine slope angle, soil moisture and crack evidence into Low / Moderate / High inspection-attention levels. These levels indicate monitoring priority; they are not professional landslide predictions.</p></div></section>
 
-      <section className="section">
-        <div className="site-container" style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(300px,1fr))",gap:28,alignItems:"center"}}>
-          <div><p className="eyebrow">Engineering Decisions</p><h2 className="section-heading">Every subsystem supports the Civil task.</h2><div className="body-large"><p><strong>4WD:</strong> traction for controlled soil, gravel and artificial slopes.</p><p><strong>Capacitive moisture sensor:</strong> better suited to repeated soil experiments than exposed resistive probes.</p><p><strong>Separate ESP32-CAM:</strong> keeps image acquisition separate from the main navigation controller.</p><p><strong>Solar assist:</strong> adds renewable-energy monitoring without overstating the panel&apos;s capability.</p></div></div>
-          <TelemetryConcept />
-        </div>
-      </section>
+      <section className="section"><div className="site-container aevns-progress-grid"><div><p className="eyebrow">Development Status</p><h2 className="section-heading">Only completed work is marked complete.</h2></div><div className="progress-list">{progress.map(([s,t],i)=><div key={t}><span>{String(i+1).padStart(2,"0")}</span><p><strong>{s}</strong> — {t}</p></div>)}</div></div></section>
 
-      <section className="section section-paper">
-        <div className="site-container aevns-progress-grid">
-          <div><p className="eyebrow">Development Status</p><h2 className="section-heading">Clear separation between completed and planned work.</h2></div>
-          <div className="progress-list">{progress.map(([s,i],n)=><div key={i}><span>{String(n+1).padStart(2,"0")}</span><p><strong>{s}:</strong> {i}</p></div>)}</div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="site-container aevns-detail-grid">
-          <div><p className="eyebrow">Machine Learning</p><h2 className="section-heading">Data first. Model later.</h2></div>
-          <p className="body-large">No finished landslide-risk model is claimed. After controlled experiments provide enough meaningful data, the project can test simple decision rules or machine-learning models that combine slope, moisture and crack observations into a preliminary low / moderate / high inspection-attention level.</p>
-        </div>
-      </section>
-
-      <section className="aevns-future">
-        <div className="site-container aevns-detail-grid">
-          <div><p className="eyebrow light-eyebrow">Project Aim</p><h2>Robotics is the tool. Slope inspection is the Civil Engineering application.</h2></div>
-          <p>AEVNS-CI demonstrates how autonomous mobility, embedded sensing, renewable-energy monitoring, computer vision and data analysis can be combined around one focused Civil Engineering problem. Real slope-stability assessment still requires appropriate geotechnical investigation and professional engineering judgement.</p>
-        </div>
-      </section>
+      <section className="aevns-future"><div className="site-container aevns-detail-grid"><div><p className="eyebrow light-eyebrow">Project Boundary</p><h2>Robotics is the technology. Slope inspection is the Civil Engineering application.</h2></div><p>AEVNS-CI is a student engineering prototype for controlled experiments and learning. Professional slope-stability assessment requires appropriate geotechnical investigation, instrumentation and engineering judgement beyond the scope of this rover.</p></div></section>
     </main>
   );
 }

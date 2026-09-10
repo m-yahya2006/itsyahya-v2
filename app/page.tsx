@@ -1,100 +1,138 @@
 import Link from "next/link";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Reveal from "@/components/Reveal";
-import ProjectConceptVisual from "@/components/ProjectConceptVisual";
 
-const stats = [
-  ["01", "Project", "In development"],
-  ["01", "Core Domain", "Civil Engineering"],
-  ["Continuous", "Learning", "Build · test · improve"],
-  ["Focused", "Direction", "Civil × Intelligent Systems"],
+const expertise = [
+  ["01", "Civil Engineering", "Structures, infrastructure and the built environment remain the engineering foundation."],
+  ["02", "Embedded Systems", "Sensors, ESP32 control and real-time data acquisition connect the project to physical conditions."],
+  ["03", "Data & AI", "Collected measurements can support analysis, computer vision and later machine-learning experiments."],
+  ["04", "Impact", "Technology is used as a tool for practical civil-engineering monitoring problems, not as the project purpose."],
 ];
 
-export default function HomePage() {
+export default function Home() {
   return (
     <main className="portfolio">
       <Navbar />
 
       <section className="home-hero">
-        <div className="site-container" style={{paddingTop:"clamp(70px,9vw,128px)",paddingBottom:"clamp(68px,8vw,110px)"}}>
-          <div style={{display:"grid",gridTemplateColumns:"minmax(0,1.05fr) minmax(340px,.95fr)",gap:"clamp(38px,6vw,86px)",alignItems:"center"}} className="home-project-grid">
-            <div>
-              <p className="eyebrow">Civil Engineering × Intelligent Systems</p>
-              <h1 style={{fontSize:"clamp(58px,7.4vw,118px)",lineHeight:.86,letterSpacing:"-.055em",fontWeight:400,margin:"18px 0 34px",color:"#17292c"}}>
-                Building<br /><span style={{color:"#367f82"}}>physical systems</span><br />that can think.
-              </h1>
-              <p className="body-large" style={{maxWidth:690}}>
-                I&apos;m Muhammad Yahya, a Civil Engineering student exploring how sensing, robotics, embedded systems and machine learning can extend the way engineers observe and understand the built environment.
-              </p>
-              <div style={{display:"flex",gap:14,flexWrap:"wrap",marginTop:32}}>
-                <Link href="/projects/aevns" className="button home-contact-button">View AEVNS-CI <span aria-hidden="true">→</span></Link>
-                <Link href="/about" className="button" style={{background:"transparent",color:"#17302f",border:"1px solid rgba(23,48,47,.22)"}}>About me</Link>
-              </div>
+        <div className="site-container home-hero-grid">
+          <div className="home-hero-copy">
+            <p className="eyebrow hero-load hero-load-1">Civil Engineering · Embedded Systems · AI & Data</p>
+            <h1 className="home-hero-title hero-load hero-load-2">
+              Engineering
+              <br />
+              for a <span>Smarter</span>
+              <br />
+              <span>Tomorrow</span>
+            </h1>
+            <p className="body-large home-hero-intro hero-load hero-load-3">
+              I&apos;m Muhammad Yahya, a Civil Engineering student exploring intelligent systems,
+              robotics and data-driven tools that connect the physical and digital worlds.
+            </p>
+            <div className="home-hero-actions hero-load hero-load-4">
+              <Link href="/projects" className="button button-primary">Explore My Work <span>→</span></Link>
+              <Link href="/about" className="button button-secondary">About Me</Link>
             </div>
-            <ProjectConceptVisual />
+            <div className="home-stats hero-load hero-load-5">
+              <div><strong>1</strong><span>Project</span></div>
+              <div><strong>1</strong><span>Domain</span></div>
+              <div><strong>Continuous</strong><span>Learning</span></div>
+              <div><strong>Global</strong><span>Perspective</span></div>
+            </div>
+          </div>
+
+          <div className="home-hero-visual hero-load hero-load-image" aria-label="Civil engineering infrastructure reference visual">
+            <div className="hero-image-shade" />
+            <div className="image-note image-note-top">INFRASTRUCTURE<br/>TECHNOLOGY<br/>PEOPLE<br/>A BRIGHTER FUTURE</div>
+            <div className="image-note image-note-bottom">REAL PROBLEMS.<br/>PRACTICAL SOLUTIONS.</div>
+            <div className="hero-image-caption"><span>01</span><p>Civil engineering as the foundation. Intelligent systems as supporting tools.</p></div>
           </div>
         </div>
       </section>
 
-      <section className="section-paper" style={{borderTop:"1px solid rgba(31,55,49,.1)",borderBottom:"1px solid rgba(31,55,49,.1)"}}>
-        <div className="site-container" style={{display:"grid",gridTemplateColumns:"repeat(4,minmax(0,1fr))"}}>
-          {stats.map(([value,label,note],i)=><div key={label} style={{padding:"34px 22px",borderRight:i<stats.length-1?"1px solid rgba(31,55,49,.12)":"none"}}>
-            <strong style={{display:"block",fontSize:20,fontWeight:500,color:"#1d3031"}}>{value}</strong>
-            <span style={{display:"block",fontSize:15,marginTop:8,color:"#526967"}}>{label}</span>
-            <small style={{display:"block",fontSize:11,letterSpacing:".08em",textTransform:"uppercase",marginTop:8,color:"#879692"}}>{note}</small>
-          </div>)}
+      <section className="expertise-strip">
+        <div className="site-container expertise-grid">
+          {expertise.map(([number,title,text]) => (
+            <Reveal key={number} className="expertise-reveal">
+              <article className={`expertise-item expertise-tone-${number}`}>
+                <div className="expertise-icon" aria-hidden="true">{number}</div>
+                <h2>{title}</h2><p>{text}</p>
+              </article>
+            </Reveal>
+          ))}
         </div>
       </section>
 
-      <section className="section">
+      <section className="featured-home">
         <div className="site-container">
+          <div className="featured-kicker"><span>FEATURED PROJECT</span><span className="featured-rule"/><span>01 / 01</span></div>
+          <div className="featured-home-grid">
+            <Reveal>
+              <div className="featured-copy">
+                <h2>AEVNS-CI<br/><span>Slope Monitoring Rover</span></h2>
+                <p>
+                  A solar-assisted 4WD rover in development for preliminary slope-condition inspection using
+                  inclination, soil moisture and visible ground-crack monitoring, with ESP32 telemetry and
+                  planned data-driven analysis.
+                </p>
+                <Link href="/projects/aevns" className="button button-primary">View Project <span>→</span></Link>
+                <div className="featured-capabilities">
+                  <span>4WD NAVIGATION</span><span>SLOPE SENSING</span><span>SOIL MOISTURE</span><span>GROUND VISION</span><span>TELEMETRY</span><span>SOLAR ASSIST</span>
+                </div>
+              </div>
+            </Reveal>
+            <Reveal>
+              <div className="prototype-stage">
+                <div className="prototype-stage-label"><span>CONCEPT VISUALIZATION / IN DEVELOPMENT</span><span>AEVNS-CI / 2026</span></div>
+                <div className="concept-visual-wrap">
+                  <Image src="/projects/aevns/slope-rover-concept.png" alt="Concept visualization of the planned 4WD solar-assisted slope-condition monitoring rover" width={1536} height={1024} className="concept-visual" priority />
+                  <span className="concept-badge">CONCEPT — NOT FINAL PROTOTYPE</span>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section className="editorial-about">
+        <div className="site-container editorial-about-grid">
+          <Reveal className="editorial-copy">
+            <p className="eyebrow">Turning Ideas Into Real Solutions</p>
+            <p className="body-large">I enjoy exploring how engineering, sensing and computation can work together to investigate meaningful physical-world problems.</p>
+            <Link href="/about" className="text-link">More About Me <span>→</span></Link>
+          </Reveal>
+          <Reveal><div className="architecture-image" role="img" aria-label="Architectural reference photography" /></Reveal>
           <Reveal>
-            <div style={{display:"grid",gridTemplateColumns:"minmax(260px,.7fr) minmax(0,1.3fr)",gap:"clamp(42px,7vw,110px)",alignItems:"start"}}>
-              <div>
-                <p className="eyebrow">Engineering Focus</p>
-                <h2 className="section-heading">Civil engineering as the foundation.</h2>
-                <p className="body-large">Intelligent technologies are the extension—not the replacement.</p>
-              </div>
-              <div style={{display:"grid",gridTemplateColumns:"repeat(2,minmax(0,1fr))",gap:14}}>
-                {[
-                  ["01","Civil Engineering","The problem domain: slope-condition inspection and the built environment."],
-                  ["02","Embedded Systems","ESP32 control, sensors, energy monitoring and physical data acquisition."],
-                  ["03","Robotics","Autonomous 4WD mobility used to reach and inspect test areas."],
-                  ["04","Data + ML","Telemetry, structured datasets and later condition-attention analysis."],
-                ].map(([n,t,d])=><article key={n} style={{padding:24,border:"1px solid rgba(32,61,54,.13)",borderRadius:20,background:"rgba(255,255,255,.48)"}}><span style={{fontSize:11,letterSpacing:".14em",color:"#6f8780"}}>{n}</span><h3 style={{fontSize:20,margin:"12px 0 8px",fontWeight:500}}>{t}</h3><p style={{margin:0,lineHeight:1.65,color:"#62716e"}}>{d}</p></article>)}
-              </div>
-            </div>
+            <blockquote className="editorial-quote"><span>“</span>Curiosity builds bridges between ideas.<cite>Muhammad Yahya</cite></blockquote>
           </Reveal>
         </div>
       </section>
 
-      <section className="section section-paper">
+      <section className="selected-work">
         <div className="site-container">
-          <div style={{display:"flex",justifyContent:"space-between",alignItems:"end",gap:24,marginBottom:32}}>
-            <div><p className="eyebrow">Featured Project</p><h2 className="section-heading" style={{marginBottom:0}}>AEVNS-CI</h2></div>
-            <Link href="/projects/aevns" style={{textDecoration:"none",color:"inherit"}}>Open project →</Link>
+          <div className="selected-work-head"><p className="eyebrow">Selected Project</p><Link href="/projects" className="text-link">View project <span>→</span></Link></div>
+          <div className="selected-work-grid single-project-grid">
+            <Reveal>
+              <Link href="/projects/aevns" className="project-card single-project-card">
+                <div className="project-card-visual project-card-aevns"><span>CIVIL × ROBOTICS</span><small>Concept visualization — project in development</small></div>
+                <div className="project-card-copy"><div><h3>AEVNS-CI</h3><p>Autonomous slope-condition monitoring rover</p></div><span>→</span></div>
+              </Link>
+            </Reveal>
           </div>
-          <Link href="/projects/aevns" style={{display:"grid",gridTemplateColumns:"minmax(320px,.95fr) minmax(0,1.05fr)",gap:34,textDecoration:"none",color:"inherit",alignItems:"center"}}>
-            <ProjectConceptVisual compact />
-            <div>
-              <p className="eyebrow">Prototype / In Development</p>
-              <h3 style={{fontSize:"clamp(34px,4vw,62px)",fontWeight:400,lineHeight:1.02,letterSpacing:"-.035em",margin:"12px 0 20px"}}>Autonomous slope-condition inspection rover</h3>
-              <p className="body-large">A low-cost, solar-assisted 4WD rover being developed to observe slope inclination, soil moisture and visible ground cracks while transmitting field data to a computer for logging and later analysis.</p>
-              <div className="project-tags" style={{marginTop:22}}>{["Civil Engineering","ESP32","4WD Robotics","Sensors","Telemetry","Computer Vision"].map(t=><span key={t}>{t}</span>)}</div>
-            </div>
-          </Link>
         </div>
       </section>
 
-      <style>{`
-        @media (max-width: 900px){
-          .home-project-grid{grid-template-columns:1fr !important}
-        }
-        @media (max-width: 720px){
-          .home-hero + section .site-container{grid-template-columns:repeat(2,1fr) !important}
-          .home-hero + section .site-container > div:nth-child(2){border-right:none !important}
-        }
-      `}</style>
+      <section className="home-contact-banner">
+        <div className="site-container home-contact-inner">
+          <div><p className="eyebrow light-eyebrow">Let&apos;s Connect</p><h2>Open to learning, opportunities and meaningful engineering conversations.</h2></div>
+          <Link href="/contact" className="button home-contact-button">Get in Touch <span>→</span></Link>
+        </div>
+      </section>
+
+      <footer className="site-footer">
+        <div className="site-container site-footer-grid"><strong>YAHYA<span className="nav-brand-mark">.</span></strong><nav><Link href="/">Home</Link><Link href="/about">About</Link><Link href="/projects">Projects</Link><Link href="/journey">Journey</Link><Link href="/contact">Contact</Link></nav><p>© 2026 Muhammad Yahya</p></div>
+      </footer>
     </main>
   );
 }
